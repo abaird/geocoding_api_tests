@@ -1,0 +1,8 @@
+Metrics/LineLength:
+  Max: 90
+
+Style/DotPosition:
+  EnforcedStyle: trailing
+
+Documentation:
+  Enabled: false

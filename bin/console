@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
-#lib = File.expand_path('../../lib', __FILE__)
-#$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+# lib = File.expand_path('../../lib', __FILE__)
+# $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 puts $LOAD_PATH
 
 require_relative '../load_lib'
@@ -13,5 +13,5 @@ require 'geocoding_api_tests'
 # require "pry"
 # Pry.start
 
-require "irb"
+require 'irb'
 IRB.start
