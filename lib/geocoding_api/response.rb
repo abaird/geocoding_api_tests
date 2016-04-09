@@ -37,7 +37,7 @@ module GeocodingApi
     attribute :results, Array[GeocodingApi::Result]
 
     def location
-      return nil if results.length < 1
+      return nil if results.empty?
       "#{results.first.geometry.location.lat},#{results.first.geometry.location.lng}"
     end
   end

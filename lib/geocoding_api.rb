@@ -15,7 +15,7 @@ module GeocodingApi
 
     def qualify_args
       msg = 'must supply either an :address, a :latlng or a :place_id'
-      raise msg if (@query_args.values.all? { |x| x.nil? } || @query_args.values.reject { |x| x.nil? }.count > 1)
+      raise msg if @query_args.values.all?(&:nil?) || @query_args.values.reject(&:nil?).count > 1
     end
 
     def find_api_key(key)
@@ -23,8 +23,8 @@ module GeocodingApi
     end
 
     def url
-      lookup_value = @query_args.delete_if { |k, v| v.nil? }.flatten
-      return "#{geocode_resource_url}/json?#{lookup_value[0]}=#{lookup_value[1]}&key=#{@api_key}"
+      lookup_value = @query_args.delete_if { |_k, v| v.nil? }.flatten
+      "#{geocode_resource_url}/json?#{lookup_value[0]}=#{lookup_value[1]}&key=#{@api_key}"
     end
 
     def geocode_resource_url
