@@ -4,7 +4,7 @@
 puts $LOAD_PATH
 
 require_relative '../load_lib'
-require 'geocoding_api_tests'
+require 'geocoding_api'
 
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.

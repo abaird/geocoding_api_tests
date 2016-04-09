@@ -1,5 +1,5 @@
 Metrics/LineLength:
-  Max: 90
+  Max: 100
 
 Style/DotPosition:
   EnforcedStyle: trailing
