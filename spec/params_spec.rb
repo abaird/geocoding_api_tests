@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'airborne'
 
 describe 'Geocoding API input params' do
   # TODO: put a model in for all the attributes in the Query class
@@ -45,19 +44,12 @@ describe 'Geocoding API input params' do
   end
 
   it 'should allow a query with address and latlng' do
+    # this is strange - add a note about it
     url = GeocodingApi::Query.new(address: escaped_address, latlng: latlng).url
     get url
     resp = GeocodingApi::Response.new(json_body)
     expect(resp.status).to eq 'OK'
     expect(resp.results.first.place_id).to eq place_id
-  end
-
-  it 'should not allow a query with an invalid api' do
-    url = GeocodingApi::Query.new(address: escaped_address, key: '123456').url
-    get url
-    resp = GeocodingApi::Response.new(json_body)
-    expect(resp.status).to eq 'REQUEST_DENIED'
-    expect(response.code).to eq 200
   end
 
   it 'should return the query in XML' do

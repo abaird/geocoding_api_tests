@@ -3,6 +3,7 @@ require 'geocoding_api'
 
 require 'rspec'
 require 'vcr'
+require 'airborne'
 require 'cgi'
 
 VCR.configure do |config|

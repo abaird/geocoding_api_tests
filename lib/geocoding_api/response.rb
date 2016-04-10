@@ -30,6 +30,14 @@ module GeocodingApi
     attribute :place_id, String
     attribute :types, Array[String]
     attribute :partial_match, Boolean
+
+    def address_component_by_type(type)
+      address_components.select { |comp| comp.types.include?(type) }
+    end
+
+    def address_component_count
+      address_components.count
+    end
   end
   class Response
     include Virtus.model
@@ -39,6 +47,15 @@ module GeocodingApi
     def location
       return nil if results.empty?
       "#{results.first.geometry.location.lat},#{results.first.geometry.location.lng}"
+    end
+
+    def result_count
+      results.length
+    end
+
+    def formatted_addresses
+      return [] if results.empty?
+      results.map { |x| x.formatted_address }
     end
   end
 end
