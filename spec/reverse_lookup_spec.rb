@@ -110,11 +110,9 @@ describe 'Geocoding API' do
         expect(resp.formatted_addresses).to include('Texas, USA')
       end
     end
-
   end
 end
 
 def first_country_addr_component(resp)
   resp.results.first.address_component_by_type('country').first
 end
-

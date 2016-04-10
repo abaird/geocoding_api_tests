@@ -55,7 +55,7 @@ module GeocodingApi
 
     def formatted_addresses
       return [] if results.empty?
-      results.map { |x| x.formatted_address }
+      results.map(&:formatted_address)
     end
   end
 end
