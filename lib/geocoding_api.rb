@@ -32,7 +32,7 @@ module GeocodingApi
 
     def xml_get
       # NOTE: the keys are different between XML and JSON
-      # in order to d this like get, you would need a different model - not enough time for that
+      # in order to do this like get, you would need a different model - not enough time for that
       xml_response = RestClient.get(url.gsub('json', 'xml'))
       parser = Nori.new(parser: :rexml, convert_tags_to: ->(tag) { tag.snakecase.to_sym })
       parser.parse(xml_response.body)[:geocode_response]
