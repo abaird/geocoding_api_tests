@@ -35,8 +35,7 @@ describe 'Geocoding API input params' do
         {latlng: latlng, place_id: place_id}
     ]
     param_list.each do |search_props|
-      url = GeocodingApi::Query.new(search_props).url
-      get url
+      get GeocodingApi::Query.new(search_props).url
       resp = GeocodingApi::Response.new(json_body)
       expect(resp.status).to eq 'INVALID_REQUEST'
       expect(response.code).to eq 400
@@ -45,8 +44,7 @@ describe 'Geocoding API input params' do
 
   it 'should allow a query with address and latlng' do
     # this is strange - add a note about it
-    url = GeocodingApi::Query.new(address: escaped_address, latlng: latlng).url
-    get url
+    get GeocodingApi::Query.new(address: escaped_address, latlng: latlng).url
     resp = GeocodingApi::Response.new(json_body)
     expect(resp.status).to eq 'OK'
     expect(resp.results.first.place_id).to eq place_id
