@@ -6,10 +6,11 @@ require 'json'
 
 module GeocodingApi
   class Query
-    def initialize(address: nil, latlng: nil, place_id: nil, key: nil)
+    def initialize(address: nil, latlng: nil, place_id: nil, key: nil, **optional_params)
       @address = address
       @latlng = latlng
       @place_id = place_id
+      @optional_params = optional_params
       @query_args = {address: @address, latlng: @latlng, place_id: @place_id}
       find_api_key(key)
     end
@@ -19,11 +20,10 @@ module GeocodingApi
     end
 
     def url
-      query_parameters = ''
-      @query_args.delete_if { |_k, v| v.nil? }.each_pair do |k, v|
-        query_parameters += "#{k}=#{v}&"
-      end
-      "#{geocode_resource_url}/json?#{query_parameters}key=#{@api_key}"
+      "#{geocode_resource_url}/json?" +
+          build_param_string(@query_args).to_s +
+          build_param_string(@optional_params).to_s +
+          "key=#{@api_key}"
     end
 
     def geocode_resource_url
@@ -42,6 +42,16 @@ module GeocodingApi
       response = RestClient.get(url)
       json = JSON.parse(response.body)
       GeocodingApi::Response.new(json)
+    end
+
+    private
+
+    def build_param_string(params)
+      string = ''
+      params.delete_if { |_k, v| v.nil? }.each_pair do |k, v|
+        string += "#{k}=#{v}&"
+      end
+      string
     end
   end
 end
