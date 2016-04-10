@@ -51,4 +51,23 @@ describe 'Geocoding API input params' do
     expect(resp.status).to eq 'OK'
     expect(resp.results.first.place_id).to eq place_id
   end
+
+  it 'should not allow a query with an invalid api' do
+    url = GeocodingApi::Query.new(address: escaped_address, key: '123456').url
+    get url
+    resp = GeocodingApi::Response.new(json_body)
+    expect(resp.status).to eq 'REQUEST_DENIED'
+    expect(response.code).to eq 200
+  end
+
+  it 'should return the query in XML' do
+    resp = GeocodingApi::Query.new(address: escaped_address).xml_get
+
+    # NOTE: these results are just Ruby data structures since the XML and JSON
+    #       don't use the same keys. A more complete implementation would have
+    #       another model that correctly modeled the XML structure.
+    expect(resp[:status]).to eq 'OK'
+    expect(resp[:result][:place_id]).to eq place_id
+    expect(resp[:result][:formatted_address]).to eq address
+  end
 end

@@ -1,6 +1,8 @@
 require 'rest-client'
 require 'virtus'
 require 'geocoding_api/response'
+require 'nori'
+require 'json'
 
 module GeocodingApi
   class Query
@@ -26,6 +28,14 @@ module GeocodingApi
 
     def geocode_resource_url
       'https://maps.googleapis.com/maps/api/geocode'
+    end
+
+    def xml_get
+      # NOTE: the keys are different between XML and JSON
+      # in order to d this like get, you would need a different model - not enough time for that
+      xml_response = RestClient.get(url.gsub('json', 'xml'))
+      parser = Nori.new(parser: :rexml, convert_tags_to: ->(tag) { tag.snakecase.to_sym })
+      parser.parse(xml_response.body)[:geocode_response]
     end
 
     def get
