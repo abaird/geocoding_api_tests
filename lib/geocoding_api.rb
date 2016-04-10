@@ -1,4 +1,4 @@
-require 'airborne'
+require 'rest-client'
 require 'virtus'
 require 'geocoding_api/response'
 
@@ -9,13 +9,7 @@ module GeocodingApi
       @latlng = latlng
       @place_id = place_id
       @query_args = {address: @address, latlng: @latlng, place_id: @place_id}
-      qualify_args
       find_api_key(key)
-    end
-
-    def qualify_args
-      msg = 'must supply either an :address, a :latlng or a :place_id'
-      raise msg if @query_args.values.all?(&:nil?) || @query_args.values.reject(&:nil?).count > 1
     end
 
     def find_api_key(key)
@@ -23,12 +17,21 @@ module GeocodingApi
     end
 
     def url
-      lookup_value = @query_args.delete_if { |_k, v| v.nil? }.flatten
-      "#{geocode_resource_url}/json?#{lookup_value[0]}=#{lookup_value[1]}&key=#{@api_key}"
+      query_parameters = ''
+      @query_args.delete_if { |_k, v| v.nil? }.each_pair do |k, v|
+        query_parameters += "#{k}=#{v}&"
+      end
+      "#{geocode_resource_url}/json?#{query_parameters}key=#{@api_key}"
     end
 
     def geocode_resource_url
       'https://maps.googleapis.com/maps/api/geocode'
+    end
+
+    def get
+      response = RestClient.get(url)
+      json = JSON.parse(response.body)
+      GeocodingApi::Response.new(json)
     end
   end
 end
