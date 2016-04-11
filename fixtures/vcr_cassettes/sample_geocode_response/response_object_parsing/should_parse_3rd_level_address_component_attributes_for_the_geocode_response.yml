@@ -1,0 +1,66 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/geocode/json?address=1600%20Amphitheatre%20Parkway,%20Mountain%20View,%20CA&key=AIzaSyCZmFMh5P3WDbrQSjA7BtgMxweodSmRM3k
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 11 Apr 2016 03:34:44 GMT
+      Expires:
+      - Tue, 12 Apr 2016 03:34:44 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Vary:
+      - Accept-Language
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Encoding:
+      - gzip
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alternate-Protocol:
+      - 443:quic
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="32,31,30,29,28,27,26,25"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAC/62V32/aMBDH3/krLD9nVX5Bkr5FSJu2aqIqY3uYqsglN+LV
+        sbPEAVUV//suCaMJSRe2wgMQ7nv2574+H88TQgjNoSiFLii5Jt+rH/D1fPis
+        wiyOUVFEa5VmSoLsKnv6Q5ZQchNJlkIlptbMNKnRExWJyvWoSj9l0OyJGToH
+        wJQyfYCckvuOeG/8E1SYZgnXCTBck9yy/HHHnsYhu1mPu6GUNnGuSg1vJP2s
+        SqkZl+Qrh9044pi8jSfUmgmusQpCM4XfOD6/EXfJcHsyFyzH94rlDFvPymmD
+        szjlkmM/MM23ELEcWCRgCyKyL1nLHN35oXLJ2XgN8/C/ma1LMq8k1xCTpWYa
+        tx7FXi1HsNfVeeQXbZHANV1nHO01WZsuU4VmAsdT3L9mL0/3rUUoHmjKNHoU
+        HYbbcfyQ3vU2SOc6GWQekhrLIKtl58DpBlQKlVG4WteA+ppprmQ/VEeZrgKO
+        d+XatusGXr9iITeV5J1l21em75qOHfzN/+OGUWVVXd7dYvH+y+L2xE26xaIy
+        NH2YTGIEzSiGw6fsjhf4M9+0A2vaq6BfhD3zncAKPNOfnor3A52BczTZwZkk
+        lmWaXrP2GSRTx7f8hrtH8lpDtRFpJtgaIh43YyD5+MmG1QbCm9lPN7x7kNMy
+        2oUffn3rtsvA/9qxHf/0cb1h07uoYbpsWnVxQyf7yW/X3P0gvwcAAA==
+    http_version: 
+  recorded_at: Mon, 11 Apr 2016 03:34:44 GMT
+recorded_with: VCR 3.0.1
