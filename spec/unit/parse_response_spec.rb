@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 # Mainly tests the object model that is behind the response. This object model gives
 # a tester object oriented access to the entire JSON response.
 

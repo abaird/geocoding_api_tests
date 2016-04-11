@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 # Find several well known landmarks
 describe 'Geocoding API' do
   let(:statue_of_liberty) { '40.6892490,-74.0445000' }

@@ -1,3 +1,4 @@
 --format progress
 --format documentation --color -o "results/results.txt"
 --format html -o "results/results.html"
+--require spec_helper

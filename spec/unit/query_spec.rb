@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 # Tests the Query class that puts together parameters. It's not technically part of
 # the Geocoder tests, but it's always good to have some tests for your test framework.
 

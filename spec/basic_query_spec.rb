@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe 'Geocoding API input params' do
   # NOTE - this can be any location as long as the address, latlng
   # and place_id refer to the same thing. The example given in the Google

@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 # Tests for filtering queries using different provided filters like bounds, components
 # and regions.
 
@@ -10,7 +8,7 @@ describe 'Geocoding API' do
 
   context 'bounding box' do
     it 'should limit results to a particular region' do
-      pending 'still finds 6 results all over the US and France'
+      skip 'still finds 6 results all over the US and France'
       resp = send_query(address: 'Paris', bounds: texas_bounds)
       expect(resp.result_count).to eq 1
     end
@@ -36,7 +34,7 @@ describe 'Geocoding API' do
 
   context 'component' do
     it 'should find Paris, FR only' do
-      pending 'filtering by country:fr should find only one Paris'
+      skip 'filtering by country:fr should find only one Paris'
       resp = send_query(address: 'paris', component: 'country:fr')
       expect(resp.result_count).to eq 1
     end

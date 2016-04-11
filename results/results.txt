@@ -80,71 +80,28 @@ sample geocode response
 [32m    should handle multiple params[0m
 
 Pending: (Failures listed here are expected and do not affect your suite's status)
-
-  1) Geocoding API bounding box should limit results to a particular region
+[33m
+  1) Geocoding API bounding box should limit results to a particular region[0m
      [36m# still finds 6 results all over the US and France[0m
-     [33mFailure/Error: [0mexpect(resp.result_count).to eq [1;34m1[0m[0m
-     [33m[0m
-     [33m  expected: 1[0m
-     [33m       got: 6[0m
-     [33m[0m
-     [33m  (compared using ==)[0m
-     [36m# ./spec/filtering_spec.rb:15:in `block (3 levels) in <top (required)>'[0m
-     [36m# ./spec/spec_helper.rb:21:in `block (3 levels) in <top (required)>'[0m
-     [36m# ./spec/spec_helper.rb:21:in `block (2 levels) in <top (required)>'[0m
-
-  2) Geocoding API component should find Paris, FR only
+[36m     # ./spec/filtering_spec.rb:10
+[0m[33m
+  2) Geocoding API component should find Paris, FR only[0m
      [36m# filtering by country:fr should find only one Paris[0m
-     [33mFailure/Error: [0mexpect(resp.result_count).to eq [1;34m1[0m[0m
-     [33m[0m
-     [33m  expected: 1[0m
-     [33m       got: 5[0m
-     [33m[0m
-     [33m  (compared using ==)[0m
-     [36m# ./spec/filtering_spec.rb:41:in `block (3 levels) in <top (required)>'[0m
-     [36m# ./spec/spec_helper.rb:21:in `block (3 levels) in <top (required)>'[0m
-     [36m# ./spec/spec_helper.rb:21:in `block (2 levels) in <top (required)>'[0m
-
-  3) Geocoding API status codes should return INVALID_REQUEST if there are extra parameters in the request
+[36m     # ./spec/filtering_spec.rb:36
+[0m[33m
+  3) Geocoding API status codes should return INVALID_REQUEST if there are extra parameters in the request[0m
      [36m# extra parameters are allowed in a query[0m
-     [33mFailure/Error: [0mexpect(resp.status).to eq [31m[1;31m'[0m[31mINVALID_REQUEST[1;31m'[0m[31m[0m[0m
-     [33m[0m
-     [33m  expected: "INVALID_REQUEST"[0m
-     [33m       got: "OK"[0m
-     [33m[0m
-     [33m  (compared using ==)[0m
-     [36m# ./spec/status_codes_spec.rb:36:in `block (3 levels) in <top (required)>'[0m
-     [36m# ./spec/spec_helper.rb:21:in `block (3 levels) in <top (required)>'[0m
-     [36m# ./spec/spec_helper.rb:21:in `block (2 levels) in <top (required)>'[0m
-
-  4) Geocoding API status codes should return INVALID_REQUEST if reverse lookup types are used in a forward lookup query
+[36m     # ./spec/status_codes_spec.rb:31
+[0m[33m
+  4) Geocoding API status codes should return INVALID_REQUEST if reverse lookup types are used in a forward lookup query[0m
      [36m# reverse lookup types are allowed in a forward lookup query[0m
-     [33mFailure/Error: [0mexpect(resp.status).to eq [31m[1;31m'[0m[31mINVALID_REQUEST[1;31m'[0m[31m[0m[0m
-     [33m[0m
-     [33m  expected: "INVALID_REQUEST"[0m
-     [33m       got: "OK"[0m
-     [33m[0m
-     [33m  (compared using ==)[0m
-     [36m# ./spec/status_codes_spec.rb:56:in `block (4 levels) in <top (required)>'[0m
-     [36m# ./spec/status_codes_spec.rb:54:in `each'[0m
-     [36m# ./spec/status_codes_spec.rb:54:in `block (3 levels) in <top (required)>'[0m
-     [36m# ./spec/spec_helper.rb:21:in `block (3 levels) in <top (required)>'[0m
-     [36m# ./spec/spec_helper.rb:21:in `block (2 levels) in <top (required)>'[0m
-
-  5) Geocoding API status codes should return INVALID_REQUEST if forward lookup types are used in a reverse lookup query
+[36m     # ./spec/status_codes_spec.rb:50
+[0m[33m
+  5) Geocoding API status codes should return INVALID_REQUEST if forward lookup types are used in a reverse lookup query[0m
      [36m# forward lookup types are allowed in a reverse lookup query[0m
-     [33mFailure/Error: [0mexpect(resp.status).to eq [31m[1;31m'[0m[31mINVALID_REQUEST[1;31m'[0m[31m[0m[0m
-     [33m[0m
-     [33m  expected: "INVALID_REQUEST"[0m
-     [33m       got: "OK"[0m
-     [33m[0m
-     [33m  (compared using ==)[0m
-     [36m# ./spec/status_codes_spec.rb:68:in `block (4 levels) in <top (required)>'[0m
-     [36m# ./spec/status_codes_spec.rb:66:in `each'[0m
-     [36m# ./spec/status_codes_spec.rb:66:in `block (3 levels) in <top (required)>'[0m
-     [36m# ./spec/spec_helper.rb:21:in `block (3 levels) in <top (required)>'[0m
-     [36m# ./spec/spec_helper.rb:21:in `block (2 levels) in <top (required)>'[0m
+[36m     # ./spec/status_codes_spec.rb:59
+[0m
 
-Finished in 5.73 seconds (files took 0.7193 seconds to load)
+Finished in 5.24 seconds (files took 0.72951 seconds to load)
 [33m55 examples, 0 failures, 5 pending[0m
 

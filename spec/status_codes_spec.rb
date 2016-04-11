@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe 'Geocoding API' do
   let(:address) { '2816 Purple Thistle Dr, Pflugerville, TX 78660, USA' }
   let(:nonsense_address) { 'asdfasdfasdfasf' }
@@ -31,7 +29,7 @@ describe 'Geocoding API' do
     end
 
     it 'should return INVALID_REQUEST if there are extra parameters in the request' do
-      pending 'extra parameters are allowed in a query'
+      skip 'extra parameters are allowed in a query'
       resp = send_error_query(address: address, foo: 'bar')
       expect(resp.status).to eq 'INVALID_REQUEST'
       expect(response.code).to eq 400
@@ -50,7 +48,7 @@ describe 'Geocoding API' do
     end
 
     it 'should return INVALID_REQUEST if reverse lookup types are used in a forward lookup query' do
-      pending 'reverse lookup types are allowed in a forward lookup query'
+      skip 'reverse lookup types are allowed in a forward lookup query'
       %w(ROOFTOP country).each do |restricted_type|
         resp = send_error_query(address: address, restricted_type: restricted_type)
         expect(resp.status).to eq 'INVALID_REQUEST'
@@ -59,7 +57,7 @@ describe 'Geocoding API' do
     end
 
     it 'should return INVALID_REQUEST if forward lookup types are used in a reverse lookup query' do
-      pending 'forward lookup types are allowed in a reverse lookup query'
+      skip 'forward lookup types are allowed in a reverse lookup query'
       [texas_bounds,
        new_york_bounds,
        ny_postal_code_component,

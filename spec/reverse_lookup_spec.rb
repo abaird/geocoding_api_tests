@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 def invalid_coords
   ['190,190', '-100,0', '100,0', '0,190', '0,-190', '-0,-0', 'foo,bar', '30.0.0,30.0.0']
 end
@@ -88,3 +86,4 @@ end
 def first_country_addr_component(resp)
   resp.results.first.address_component_by_type('country').first
 end
+
