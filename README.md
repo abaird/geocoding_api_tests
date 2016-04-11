@@ -45,18 +45,18 @@ tests. That way it should be easy to replace the test data if needed.
 
 ### An alternate test approach
 One test approach could be keeping a set of queries and a master copy of what the response should be. That way when
-you play them back you would just compare the response to the master copy. The problem with this is that:
-1. you would have to write a pretty sophisticated comparator that would help you define what line was different
-2. there could be somethings that might be different that wouldn't matter (lat/lng precision)
-3. keeping up with the different files would be it's own maintenance overhead esp. since GIS data isn't always static
+you play them back you would just compare the response to the master copy. The problem with this is that:  
+1. you would have to write a pretty sophisticated comparator that would help you define what line was different  
+2. there could be somethings that might be different that wouldn't matter (lat/lng precision)  
+3. keeping up with the different files would be it's own maintenance overhead esp. since GIS data isn't always static  
 Ultimately I decided that this approach woudln't fit my time budget for this project.
 
 ### Other tests I would do if...
-There are some other tests that I think are important but I didn't have the time or access to do it.
+There are some other tests that I think are important but I didn't have the time or access to do it.  
 1. Performance tests: I didn't want to risk getting blocked while I was developing this test, but I think this is obviously
 pretty important for a public query API. I would prioritize testing any kind of throttling mechanism and then make sure
-that people that paid extra for it could get around these limits.
+that people that paid extra for it could get around these limits.  
 2. XML: I wrote one XML test (see `basic_query_spec.rb`) that parsed an XML return type. Ideally I would be able to turn
 a switch and seamlessly use XML instead of JSON. However, I discovered that Google uses different keys for XML than JSON and
 so it wasn't nearly as simple as I thought. If I had more time I could make a parallel model for XML that I could parse
-just as easily.
+just as easily.  
