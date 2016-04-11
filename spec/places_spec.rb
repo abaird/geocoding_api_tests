@@ -7,7 +7,7 @@ describe 'Geocoding API' do
   let(:statue_of_liberty_box) { '40.6884436,-74.0477723|40.6914699,-74.0423220' }
   let(:liberty_island_addr) { 'Liberty Island, New York, NJ, USA' }
   let(:the_alamo_latlng) { '29.4260137,-98.4861474' }
-  let(:the_alamo_addr) { 'The Alamo, 300 Alamo Plaza, San Antonio, TX 78205, USA' }
+  let(:the_alamo_addr) { 'The Alamo, San Antonio, TX 78205, USA' }
 
   it 'should find the Statue of Liberty' do
     resp = send_query(latlng: statue_of_liberty, result_type: 'neighborhood')
