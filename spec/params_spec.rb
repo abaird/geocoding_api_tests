@@ -3,28 +3,26 @@ require 'spec_helper'
 describe 'Geocoding API input params' do
   # TODO: put a model in for all the attributes in the Query class
   # TODO: abstract out the actual place into a file that can be read in
+  # TODO: this is the only place I use the #get method on Query - fix this
   let(:address) { '2816 Purple Thistle Dr, Pflugerville, TX 78660, USA' }
   let(:latlng) { '30.4887798,-97.56140049999999' }
   let(:place_id) { 'ChIJxUO0ldPERIYRgMsbEVZO_tE' }
   let(:escaped_address) { CGI.escape address }
 
   it 'should perform a forward lookup on address' do
-    resp = GeocodingApi::Query.new(address: escaped_address).get
-    expect(resp.status).to eq 'OK'
+    resp = send_query(address: escaped_address)
     expect(resp.location).to eq latlng
     expect(resp.results.first.place_id).to eq place_id
   end
 
   it 'should perform a reverse lookup on latitude longitude' do
-    resp = GeocodingApi::Query.new(latlng: latlng).get
-    expect(resp.status).to eq 'OK'
+    resp = send_query(latlng: latlng)
     expect(resp.results.first.formatted_address).to eq address
     expect(resp.results.first.place_id).to eq place_id
   end
 
   it 'should perform a reverse lookup on place id' do
-    resp = GeocodingApi::Query.new(place_id: place_id).get
-    expect(resp.status).to eq 'OK'
+    resp = send_query(place_id: place_id)
     expect(resp.location).to eq latlng
     expect(resp.results.first.formatted_address).to eq address
   end
@@ -35,8 +33,7 @@ describe 'Geocoding API input params' do
         {latlng: latlng, place_id: place_id}
     ]
     param_list.each do |search_props|
-      get GeocodingApi::Query.new(search_props).url
-      resp = GeocodingApi::Response.new(json_body)
+      resp = send_error_query(search_props)
       expect(resp.status).to eq 'INVALID_REQUEST'
       expect(response.code).to eq 400
     end
@@ -44,8 +41,7 @@ describe 'Geocoding API input params' do
 
   it 'should allow a query with address and latlng' do
     # this is strange - add a note about it
-    get GeocodingApi::Query.new(address: escaped_address, latlng: latlng).url
-    resp = GeocodingApi::Response.new(json_body)
+    resp = send_query(address: escaped_address, latlng: latlng)
     expect(resp.status).to eq 'OK'
     expect(resp.results.first.place_id).to eq place_id
   end

@@ -17,34 +17,27 @@ describe 'Geocoding API' do
   context 'reverse_lookup' do
     invalid_coords.each do |coord|
       it "should throw an error using lat lng coordinates: #{coord}" do
-        get GeocodingApi::Query.new(latlng: coord).url
-        resp = GeocodingApi::Response.new(json_body)
+        resp = send_error_query(latlng: coord)
         expect(resp.status).to eq 'ZERO_RESULTS'
         expect_status 200
       end
     end
 
     it 'should return multiple results when using lat lng' do
-      get GeocodingApi::Query.new(latlng: latlng).url
-      resp = GeocodingApi::Response.new(json_body)
-      expect(resp.status).to eq 'OK'
+      resp = send_query(latlng: latlng)
       expect(resp.result_count).to eq 6
       expect(resp.formatted_addresses).to include('United States')
       expect(resp.formatted_addresses).to include(address)
     end
 
     it 'should return one result when using a place_id' do
-      get GeocodingApi::Query.new(place_id: place_id).url
-      resp = GeocodingApi::Response.new(json_body)
-      expect(resp.status).to eq 'OK'
+      resp = send_query(place_id: place_id)
       expect(resp.result_count).to eq 1
     end
 
     it 'should encode results in spanish' do
       # seems to only translate countries
-      get GeocodingApi::Query.new(address: address, language: 'es').url
-      resp = GeocodingApi::Response.new(json_body)
-      expect(resp.status).to eq 'OK'
+      resp = send_query(address: address, language: 'es')
       expect(resp.results.first.formatted_address).to match(/EE\. UU\.$/)
       expect(first_country_addr_component(resp).long_name).to eq 'Estados Unidos'
     end
@@ -52,18 +45,14 @@ describe 'Geocoding API' do
     context 'result type filtering' do
       it 'should only return one result when filtering by administrative_area_level_1' do
         state_filter = 'administrative_area_level_1'
-        get GeocodingApi::Query.new(latlng: latlng, result_type: state_filter).url
-        resp = GeocodingApi::Response.new(json_body)
-        expect(resp.status).to eq 'OK'
+        resp = send_query(latlng: latlng, result_type: state_filter)
         expect(resp.result_count).to eq 1
         expect(resp.results.first.formatted_address).to eq 'Texas, USA'
         expect(resp.results.first.types).to include('administrative_area_level_1')
       end
       it 'should only return state and zip when filtering by multiple top level result_types' do
         filter = 'administrative_area_level_1|postal_code'
-        get GeocodingApi::Query.new(latlng: latlng, result_type: filter).url
-        resp = GeocodingApi::Response.new(json_body)
-        expect(resp.status).to eq 'OK'
+        resp = send_query(latlng: latlng, result_type: filter)
         expect(resp.result_count).to eq 2
         expect(resp.formatted_addresses).to include('Pflugerville, TX 78660, USA')
         expect(resp.formatted_addresses).to include('Texas, USA')
@@ -72,26 +61,20 @@ describe 'Geocoding API' do
 
     context 'location type filtering' do
       it 'should get the lowest level address when filtering by ROOFTOP' do
-        get GeocodingApi::Query.new(latlng: latlng, location_type: 'ROOFTOP').url
-        resp = GeocodingApi::Response.new(json_body)
-        expect(resp.status).to eq 'OK'
+        resp = send_query(latlng: latlng, location_type: 'ROOFTOP')
         expect(resp.result_count).to eq 1
         expect(resp.formatted_addresses).to include(address)
       end
 
       it 'should return street object when filtering by GEOMETRIC_CENTER' do
-        get GeocodingApi::Query.new(latlng: latlng, location_type: 'GEOMETRIC_CENTER').url
-        resp = GeocodingApi::Response.new(json_body)
-        expect(resp.status).to eq 'OK'
+        resp = send_query(latlng: latlng, location_type: 'GEOMETRIC_CENTER')
         expect(resp.result_count).to eq 1
         expect(resp.formatted_addresses).to include(street_address)
       end
 
       it 'should return multiple results when filtering by ROOFTOP and APPROXIMATE' do
         filter = 'ROOFTOP|APPROXIMATE'
-        get GeocodingApi::Query.new(latlng: latlng, location_type: filter).url
-        resp = GeocodingApi::Response.new(json_body)
-        expect(resp.status).to eq 'OK'
+        resp = send_query(latlng: latlng, location_type: filter)
         expect(resp.result_count).to eq 6
         expect(resp.formatted_addresses).to include(address)
         expect(resp.formatted_addresses).to include('Texas, USA')

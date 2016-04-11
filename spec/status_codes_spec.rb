@@ -13,44 +13,38 @@ describe 'Geocoding API' do
 
   context 'status codes' do
     it 'should return a ZERO_RESULTS status code when there are no results' do
-      get GeocodingApi::Query.new(address: nonsense_address).url
-      resp = GeocodingApi::Response.new(json_body)
+      resp = send_error_query(address: nonsense_address)
       expect(resp.status).to eq 'ZERO_RESULTS'
       expect(response.code).to eq 200
     end
 
     it 'should return REQUEST_DENIED status code when using an invalid key' do
-      get GeocodingApi::Query.new(address: address, key: '123456').url
-      resp = GeocodingApi::Response.new(json_body)
+      resp = send_error_query(address: address, key: '123456')
       expect(resp.status).to eq 'REQUEST_DENIED'
       expect(response.code).to eq 200
     end
 
     it 'should return INVALID_REQUEST when the query is improperly formatted' do
-      get GeocodingApi::Query.new(foo: 'bar').url
-      resp = GeocodingApi::Response.new(json_body)
+      resp = send_error_query(foo: 'bar')
       expect(resp.status).to eq 'INVALID_REQUEST'
       expect(response.code).to eq 400
     end
 
     it 'should return INVALID_REQUEST if there are extra parameters in the request' do
       pending 'extra parameters are allowed in a query'
-      get GeocodingApi::Query.new(address: address, foo: 'bar').url
-      resp = GeocodingApi::Response.new(json_body)
+      resp = send_error_query(address: address, foo: 'bar')
       expect(resp.status).to eq 'INVALID_REQUEST'
       expect(response.code).to eq 400
     end
 
     it 'should return INVALID_REQUEST if an invalid result_type is given' do
-      get GeocodingApi::Query.new(latlng: latlng, result_type: 'foo|bar').url
-      resp = GeocodingApi::Response.new(json_body)
+      resp = send_error_query(latlng: latlng, result_type: 'foo|bar')
       expect(resp.status).to eq 'INVALID_REQUEST'
       expect(response.code).to eq 400
     end
 
     it 'should return INVALID_REQUEST if an invalid location_type is given' do
-      get GeocodingApi::Query.new(latlng: latlng, location_type: 'foo').url
-      resp = GeocodingApi::Response.new(json_body)
+      resp = send_error_query(latlng: latlng, location_type: 'foo')
       expect(resp.status).to eq 'INVALID_REQUEST'
       expect(response.code).to eq 400
     end
@@ -58,8 +52,7 @@ describe 'Geocoding API' do
     it 'should return INVALID_REQUEST if reverse lookup types are used in a forward lookup query' do
       pending 'reverse lookup types are allowed in a forward lookup query'
       %w(ROOFTOP country).each do |restricted_type|
-        get GeocodingApi::Query.new(address: address, restricted_type: restricted_type).url
-        resp = GeocodingApi::Response.new(json_body)
+        resp = send_error_query(address: address, restricted_type: restricted_type)
         expect(resp.status).to eq 'INVALID_REQUEST'
         expect(response.code).to eq 400
       end
@@ -71,8 +64,7 @@ describe 'Geocoding API' do
        new_york_bounds,
        ny_postal_code_component,
        tx_postal_code_component].each do |restricted_type|
-        get GeocodingApi::Query.new(latlng: latlng, restricted_type: restricted_type).url
-        resp = GeocodingApi::Response.new(json_body)
+        resp = send_error_query(latlng: latlng, restricted_type: restricted_type)
         expect(resp.status).to eq 'INVALID_REQUEST'
         expect(response.code).to eq 400
       end

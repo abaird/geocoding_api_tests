@@ -22,4 +22,16 @@ RSpec.configure do |config|
       WebMock.disable_net_connect!
     end
   end
+
+  def send_query(args)
+    get GeocodingApi::Query.new(args).url
+    resp = GeocodingApi::Response.new(json_body)
+    expect(resp.status).to eq 'OK'
+    resp
+  end
+
+  def send_error_query(args)
+    get GeocodingApi::Query.new(args).url
+    GeocodingApi::Response.new(json_body)
+  end
 end
