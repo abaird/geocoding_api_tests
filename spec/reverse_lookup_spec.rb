@@ -9,10 +9,6 @@ describe 'Geocoding API' do
   let(:street_address) { 'Penny Royal Dr, Pflugerville, TX 78660, USA' }
   let(:latlng) { '30.4887798,-97.56140049999999' }
   let(:place_id) { 'ChIJxUO0ldPERIYRgMsbEVZO_tE' }
-  let(:texas_bounds) { 'bounds=25.8371638,-106.6456461|36.5007041,-93.5080389' }
-  let(:new_york_bounds) { 'bounds=40.4960439,-74.2557349|40.9152556,-73.7002721' }
-  let(:ny_postal_code_component) { 'postal_code:12344|administrative_area:NY' }
-  let(:tx_postal_code_component) { 'postal_code:78660|administrative_area:TX' }
 
   context 'reverse_lookup' do
     invalid_coords.each do |coord|

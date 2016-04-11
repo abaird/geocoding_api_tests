@@ -24,14 +24,25 @@ RSpec.configure do |config|
   end
 
   def send_query(args)
-    get GeocodingApi::Query.new(args).url
+    url = GeocodingApi::Query.new(args).url
+    get url
     resp = GeocodingApi::Response.new(json_body)
     expect(resp.status).to eq 'OK'
     resp
   end
 
   def send_error_query(args)
-    get GeocodingApi::Query.new(args).url
+    url = GeocodingApi::Query.new(args).url
+    get url
     GeocodingApi::Response.new(json_body)
+  end
+end
+
+RSpec::Matchers.define :be_close_to do |expected|
+  match do |actual|
+    expected_lat, expected_lng = expected.split(',').map(&:to_f)
+    actual_lat, actual_lng = actual.split(',').map(&:to_f)
+    delta = 0.0001 # this is approx. 10m for lat/lng coords
+    ((expected_lat - actual_lat).abs <= delta) && ((expected_lng - actual_lng).abs <= delta)
   end
 end

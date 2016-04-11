@@ -9,3 +9,8 @@ would be it's own maintenance overhead.
 I'm only testing with my one location. I could use some more (and probably will), but if I had more interesting data points
 then the tests might be different. In a real test, I would probably be testing against a limited data set or have control
 over what kinds of objects are loaded.
+
+There's a lot of stuff in the doc that just plain doesn't work. Ideally I would have been able to show off more examples
+that work but it's just not happening. This is where I need to be able to talk to a product person to figure out what
+is supposed to work and what is just broken documentation.
+

@@ -6,10 +6,10 @@ describe 'Geocoding API' do
   let(:latlng) { '30.4887798,-97.56140049999999' }
   let(:place_id) { 'ChIJxUO0ldPERIYRgMsbEVZO_tE' }
   let(:api_key) { ENV['API_KEY'] }
-  let(:texas_bounds) { {bounds: '25.8371638,-106.6456461|36.5007041,-93.5080389'} }
-  let(:new_york_bounds) { {bounds: '40.4960439,-74.2557349|40.9152556,-73.7002721'} }
-  let(:ny_postal_code_component) { {component: 'postal_code:12345|administrative_area:NY'} }
-  let(:tx_postal_code_component) { {component: 'postal_code:78660|administrative_area:TX'} }
+  let(:texas_bounds) { { bounds: '25.8371638,-106.6456461|36.5007041,-93.5080389' } }
+  let(:new_york_bounds) { { bounds: '40.496091,-79.76214379999999|45.015865,-71.85620639999999' } }
+  let(:ny_postal_code_component) { { component: 'postal_code:12345|administrative_area:NY' } }
+  let(:tx_postal_code_component) { { component: 'postal_code:78660|administrative_area:TX' } }
 
   context 'status codes' do
     it 'should return a ZERO_RESULTS status code when there are no results' do

@@ -3,7 +3,6 @@ require 'spec_helper'
 describe 'Geocoding API input params' do
   # TODO: put a model in for all the attributes in the Query class
   # TODO: abstract out the actual place into a file that can be read in
-  # TODO: this is the only place I use the #get method on Query - fix this
   let(:address) { '2816 Purple Thistle Dr, Pflugerville, TX 78660, USA' }
   let(:latlng) { '30.4887798,-97.56140049999999' }
   let(:place_id) { 'ChIJxUO0ldPERIYRgMsbEVZO_tE' }
