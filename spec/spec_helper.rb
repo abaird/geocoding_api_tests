@@ -23,9 +23,12 @@ RSpec.configure do |config|
     end
   end
 
+  # Convenience queries that handle putting together a query and sending
+  # it to Google. The first method checks the OK response, the second
+  # method leaves it up to the tester.
   def send_query(args)
     url = GeocodingApi::Query.new(args).url
-    get url
+    get url # debug here
     resp = GeocodingApi::Response.new(json_body)
     expect(resp.status).to eq 'OK'
     resp

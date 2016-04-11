@@ -28,8 +28,8 @@ describe 'Geocoding API input params' do
 
   it 'should not allow search on place_id with latlng or address' do
     param_list = [
-        {address: escaped_address, place_id: place_id},
-        {latlng: latlng, place_id: place_id}
+      { address: escaped_address, place_id: place_id },
+      { latlng: latlng, place_id: place_id }
     ]
     param_list.each do |search_props|
       resp = send_error_query(search_props)

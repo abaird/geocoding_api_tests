@@ -1,4 +1,15 @@
 module GeocodingApi
+  # Model for the geocode response. Allows access to all points of
+  # the response along with convenience methods for getting at buried
+  # data.
+  #
+  # ex:
+  #   obj = GeocodingApi::Response.new(object)
+  #    -> where object is a symbolized hash representing the response
+  #   obj.status                          -> gets API status
+  #   obj.results.first                   -> returns first result (if there is one)
+  #   obj.results.first.formatted_address -> gets fancy address of first result
+
   class LatLng
     include Virtus.value_object
     attribute :lat, Float
