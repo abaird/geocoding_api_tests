@@ -1,5 +1,8 @@
 require 'spec_helper'
 
+# Tests for filtering queries using different provided filters like bounds, components
+# and regions.
+
 describe 'Geocoding API' do
   let(:texas_bounds) { '25.8371638,-106.6456461|36.5007041,-93.5080389' }
   let(:texas_bounds_rev) { '36.5007041,-93.5080389|25.8371638,-106.6456461' }

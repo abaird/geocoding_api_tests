@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+# Find several well known landmarks
 describe 'Geocoding API' do
   let(:statue_of_liberty) { '40.6892490,-74.0445000' }
   let(:statue_of_liberty_addr) { 'Liberty Island, New York, NJ, USA' }
@@ -23,8 +24,8 @@ describe 'Geocoding API' do
     expect(resp.location).to be_close_to the_alamo_latlng
   end
 
-  it 'should find the Alamo by location' do
+  it 'should find the Alamo by coordinates' do
     resp = send_query(latlng: the_alamo_latlng, result_type: 'premise')
-    expect(resp.formatted_addresses.first).to match 'The Alamo'
+    expect(resp.formatted_addresses.first).to eq the_alamo_addr
   end
 end

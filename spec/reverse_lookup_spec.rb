@@ -9,6 +9,12 @@ describe 'Geocoding API' do
   let(:street_address) { 'Penny Royal Dr, Pflugerville, TX 78660, USA' }
   let(:latlng) { '30.4887798,-97.56140049999999' }
   let(:place_id) { 'ChIJxUO0ldPERIYRgMsbEVZO_tE' }
+  let(:spanish_addr_match) { /EE\. UU\.$/ }
+  let(:spanish_country_name) { 'Estados Unidos' }
+  let(:state_name) { 'Texas, USA' }
+  let(:country_name) { 'United States' }
+  let(:city_name) { 'Pflugerville, TX 78660, USA' }
+  let(:latlng_responses) { 6 }
 
   context 'reverse_lookup' do
     invalid_coords.each do |coord|
@@ -21,8 +27,8 @@ describe 'Geocoding API' do
 
     it 'should return multiple results when using lat lng' do
       resp = send_query(latlng: latlng)
-      expect(resp.result_count).to eq 6
-      expect(resp.formatted_addresses).to include('United States')
+      expect(resp.result_count).to eq latlng_responses
+      expect(resp.formatted_addresses).to include(country_name)
       expect(resp.formatted_addresses).to include(address)
     end
 
@@ -34,8 +40,8 @@ describe 'Geocoding API' do
     it 'should encode results in spanish' do
       # seems to only translate countries
       resp = send_query(address: address, language: 'es')
-      expect(resp.results.first.formatted_address).to match(/EE\. UU\.$/)
-      expect(first_country_addr_component(resp).long_name).to eq 'Estados Unidos'
+      expect(resp.results.first.formatted_address).to match(spanish_addr_match)
+      expect(first_country_addr_component(resp).long_name).to eq spanish_country_name
     end
 
     context 'result type filtering' do
@@ -43,15 +49,15 @@ describe 'Geocoding API' do
         state_filter = 'administrative_area_level_1'
         resp = send_query(latlng: latlng, result_type: state_filter)
         expect(resp.result_count).to eq 1
-        expect(resp.results.first.formatted_address).to eq 'Texas, USA'
+        expect(resp.results.first.formatted_address).to eq state_name
         expect(resp.results.first.types).to include('administrative_area_level_1')
       end
       it 'should only return state and zip when filtering by multiple top level result_types' do
         filter = 'administrative_area_level_1|postal_code'
         resp = send_query(latlng: latlng, result_type: filter)
         expect(resp.result_count).to eq 2
-        expect(resp.formatted_addresses).to include('Pflugerville, TX 78660, USA')
-        expect(resp.formatted_addresses).to include('Texas, USA')
+        expect(resp.formatted_addresses).to include(city_name)
+        expect(resp.formatted_addresses).to include(state_name)
       end
     end
 
@@ -71,9 +77,9 @@ describe 'Geocoding API' do
       it 'should return multiple results when filtering by ROOFTOP and APPROXIMATE' do
         filter = 'ROOFTOP|APPROXIMATE'
         resp = send_query(latlng: latlng, location_type: filter)
-        expect(resp.result_count).to eq 6
+        expect(resp.result_count).to eq latlng_responses
         expect(resp.formatted_addresses).to include(address)
-        expect(resp.formatted_addresses).to include('Texas, USA')
+        expect(resp.formatted_addresses).to include(state_name)
       end
     end
   end
