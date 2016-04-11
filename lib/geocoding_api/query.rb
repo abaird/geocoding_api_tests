@@ -14,15 +14,15 @@ module GeocodingApi
       @latlng = latlng
       @place_id = place_id
       @optional_params = optional_params
-      @query_args = {address: @address, latlng: @latlng, place_id: @place_id}
+      @query_args = { address: @address, latlng: @latlng, place_id: @place_id }
       find_api_key(key)
     end
 
     def url
       "#{geocode_resource_url}/json?" +
-          build_param_string(@query_args).to_s +
-          build_param_string(@optional_params).to_s +
-          "key=#{@api_key}"
+        build_param_string(@query_args).to_s +
+        build_param_string(@optional_params).to_s +
+        "key=#{@api_key}"
     end
 
     def geocode_resource_url

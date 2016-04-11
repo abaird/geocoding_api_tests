@@ -86,4 +86,3 @@ end
 def first_country_addr_component(resp)
   resp.results.first.address_component_by_type('country').first
 end
-
