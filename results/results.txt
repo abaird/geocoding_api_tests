@@ -102,6 +102,6 @@ Pending: (Failures listed here are expected and do not affect your suite's statu
 [36m     # ./spec/status_codes_spec.rb:59
 [0m
 
-Finished in 5.24 seconds (files took 0.72951 seconds to load)
+Finished in 5.17 seconds (files took 0.74022 seconds to load)
 [33m55 examples, 0 failures, 5 pending[0m
 

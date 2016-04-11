@@ -40,9 +40,9 @@
       var elem = document.getElementById(element_id);
       if (elem.className.indexOf("failed") == -1) {  // class doesn't includes failed
         if (elem.className.indexOf("not_implemented") == -1) { // class doesn't include not_implemented
-          removeClass(element_id, 'passed');
+      removeClass(element_id, 'passed');
           addClass(element_id, 'not_implemented');
-        }
+    }
       }
     }
 
@@ -86,7 +86,7 @@
           elems[i].style.display = subgroup_style_mode;
         } else {
           elems[i].style.display = display_style_mode;
-        }
+    }
       }
     }
 
@@ -343,7 +343,7 @@
     <div id="summary">
       <p id="totals">&#160;</p>
       <p id="duration">&#160;</p>
-    </div>
+  </div>
   </div>
 
 
@@ -353,25 +353,25 @@
         <dt id="example_group_1" class="passed">Geocoding API input params</dt>
         <script type="text/javascript">moveProgressBar('1.8');</script>
         <dd class="example passed"><span class="passed_spec_name">should perform a forward lookup on address</span><span
-                class='duration'>0.46371s</span></dd>
+                class='duration'>0.45679s</span></dd>
         <script type="text/javascript">moveProgressBar('3.6');</script>
         <dd class="example passed"><span
                 class="passed_spec_name">should perform a reverse lookup on latitude longitude</span><span
-                class='duration'>0.15244s</span></dd>
+                class='duration'>0.12984s</span></dd>
         <script type="text/javascript">moveProgressBar('5.4');</script>
         <dd class="example passed"><span
-                class="passed_spec_name">should perform a reverse lookup on place id</span><span class='duration'>0.13622s</span>
+                class="passed_spec_name">should perform a reverse lookup on place id</span><span class='duration'>0.11134s</span>
         </dd>
         <script type="text/javascript">moveProgressBar('7.2');</script>
         <dd class="example passed"><span
-                class="passed_spec_name">should allow a query with address and latlng</span><span class='duration'>0.11686s</span>
+                class="passed_spec_name">should allow a query with address and latlng</span><span class='duration'>0.14123s</span>
         </dd>
         <script type="text/javascript">moveProgressBar('9.0');</script>
         <dd class="example passed"><span class="passed_spec_name">should not allow search on place_id with latlng or address</span><span
-                class='duration'>0.21146s</span></dd>
+                class='duration'>0.20712s</span></dd>
         <script type="text/javascript">moveProgressBar('10.9');</script>
         <dd class="example passed"><span class="passed_spec_name">should return the query in XML</span><span
-                class='duration'>0.12033s</span></dd>
+                class='duration'>0.12175s</span></dd>
       </dl>
     </div>
     <div id="div_group_2" class="example_group passed">
@@ -390,13 +390,13 @@
         </dd>
         <script type="text/javascript">moveProgressBar('14.5');</script>
         <dd class="example passed"><span class="passed_spec_name">should find the state TX when supplied a Texas-sized bounding box</span><span
-                class='duration'>0.11072s</span></dd>
+                class='duration'>0.10964s</span></dd>
         <script type="text/javascript">moveProgressBar('16.3');</script>
         <dd class="example passed"><span class="passed_spec_name">should find the state NY when supplied a NY-sized bounding box</span><span
-                class='duration'>0.11321s</span></dd>
+                class='duration'>0.10588s</span></dd>
         <script type="text/javascript">moveProgressBar('18.1');</script>
         <dd class="example passed"><span class="passed_spec_name">should find ZERO_RESULTS when the bounding box corners are reversed</span><span
-                class='duration'>0.10957s</span></dd>
+                class='duration'>0.10848s</span></dd>
       </dl>
     </div>
     <div id="div_group_4" class="example_group passed">
@@ -410,7 +410,7 @@
         </dd>
         <script type="text/javascript">moveProgressBar('21.8');</script>
         <dd class="example passed"><span class="passed_spec_name">should return INVALID_REQUEST when only sending a component filter</span><span
-                class='duration'>0.10482s</span></dd>
+                class='duration'>0.10497s</span></dd>
       </dl>
     </div>
     <div id="div_group_5" class="example_group passed">
@@ -418,7 +418,7 @@
         <dt id="example_group_5" class="passed">region</dt>
         <script type="text/javascript">moveProgressBar('23.6');</script>
         <dd class="example passed"><span class="passed_spec_name">should find Paris, FR only</span><span
-                class='duration'>0.11134s</span></dd>
+                class='duration'>0.11816s</span></dd>
       </dl>
     </div>
     <div id="div_group_6" class="example_group passed">
@@ -426,16 +426,16 @@
         <dt id="example_group_6" class="passed">Geocoding API</dt>
         <script type="text/javascript">moveProgressBar('25.4');</script>
         <dd class="example passed"><span class="passed_spec_name">should find the Statue of Liberty</span><span
-                class='duration'>0.12881s</span></dd>
+                class='duration'>0.11024s</span></dd>
         <script type="text/javascript">moveProgressBar('27.2');</script>
         <dd class="example passed"><span class="passed_spec_name">should find Liberty Island</span><span
-                class='duration'>0.11202s</span></dd>
+                class='duration'>0.27515s</span></dd>
         <script type="text/javascript">moveProgressBar('29.0');</script>
         <dd class="example passed"><span class="passed_spec_name">should find the Alamo by address</span><span
-                class='duration'>0.12308s</span></dd>
+                class='duration'>0.12215s</span></dd>
         <script type="text/javascript">moveProgressBar('30.9');</script>
         <dd class="example passed"><span class="passed_spec_name">should find the Alamo by coordinates</span><span
-                class='duration'>0.10666s</span></dd>
+                class='duration'>0.11713s</span></dd>
       </dl>
     </div>
     <div id="div_group_7" class="example_group passed">
@@ -448,42 +448,42 @@
         <dt id="example_group_8" class="passed">reverse_lookup</dt>
         <script type="text/javascript">moveProgressBar('32.7');</script>
         <dd class="example passed"><span class="passed_spec_name">should throw an error using lat lng coordinates: 190,190</span><span
-                class='duration'>0.10698s</span></dd>
+                class='duration'>0.11405s</span></dd>
         <script type="text/javascript">moveProgressBar('34.5');</script>
         <dd class="example passed"><span class="passed_spec_name">should throw an error using lat lng coordinates: -100,0</span><span
-                class='duration'>0.10683s</span></dd>
+                class='duration'>0.11155s</span></dd>
         <script type="text/javascript">moveProgressBar('36.3');</script>
         <dd class="example passed"><span
                 class="passed_spec_name">should throw an error using lat lng coordinates: 100,0</span><span
-                class='duration'>0.10987s</span></dd>
+                class='duration'>0.10484s</span></dd>
         <script type="text/javascript">moveProgressBar('38.1');</script>
         <dd class="example passed"><span
                 class="passed_spec_name">should throw an error using lat lng coordinates: 0,190</span><span
-                class='duration'>0.11164s</span></dd>
+                class='duration'>0.10549s</span></dd>
         <script type="text/javascript">moveProgressBar('40.0');</script>
         <dd class="example passed"><span class="passed_spec_name">should throw an error using lat lng coordinates: 0,-190</span><span
-                class='duration'>0.10562s</span></dd>
+                class='duration'>0.10551s</span></dd>
         <script type="text/javascript">moveProgressBar('41.8');</script>
         <dd class="example passed"><span
                 class="passed_spec_name">should throw an error using lat lng coordinates: -0,-0</span><span
-                class='duration'>0.10465s</span></dd>
+                class='duration'>0.11740s</span></dd>
         <script type="text/javascript">moveProgressBar('43.6');</script>
         <dd class="example passed"><span class="passed_spec_name">should throw an error using lat lng coordinates: foo,bar</span><span
-                class='duration'>0.11000s</span></dd>
+                class='duration'>0.12949s</span></dd>
         <script type="text/javascript">moveProgressBar('45.4');</script>
         <dd class="example passed"><span class="passed_spec_name">should throw an error using lat lng coordinates: 30.0.0,30.0.0</span><span
-                class='duration'>0.10903s</span></dd>
+                class='duration'>0.11779s</span></dd>
         <script type="text/javascript">moveProgressBar('47.2');</script>
         <dd class="example passed"><span
-                class="passed_spec_name">should return multiple results when using lat lng</span><span class='duration'>0.14150s</span>
+                class="passed_spec_name">should return multiple results when using lat lng</span><span class='duration'>0.13271s</span>
         </dd>
         <script type="text/javascript">moveProgressBar('49.0');</script>
         <dd class="example passed"><span
-                class="passed_spec_name">should return one result when using a place_id</span><span class='duration'>0.12706s</span>
+                class="passed_spec_name">should return one result when using a place_id</span><span class='duration'>0.11852s</span>
         </dd>
         <script type="text/javascript">moveProgressBar('50.9');</script>
         <dd class="example passed"><span class="passed_spec_name">should encode results in spanish</span><span
-                class='duration'>0.23729s</span></dd>
+                class='duration'>0.11721s</span></dd>
       </dl>
     </div>
     <div id="div_group_9" class="example_group passed">
@@ -491,10 +491,10 @@
         <dt id="example_group_9" class="passed">result type filtering</dt>
         <script type="text/javascript">moveProgressBar('52.7');</script>
         <dd class="example passed"><span class="passed_spec_name">should only return one result when filtering by administrative_area_level_1</span><span
-                class='duration'>0.12906s</span></dd>
+                class='duration'>0.13874s</span></dd>
         <script type="text/javascript">moveProgressBar('54.5');</script>
         <dd class="example passed"><span class="passed_spec_name">should only return state and zip when filtering by multiple top level result_types</span><span
-                class='duration'>0.14034s</span></dd>
+                class='duration'>0.11984s</span></dd>
       </dl>
     </div>
     <div id="div_group_10" class="example_group passed">
@@ -502,13 +502,13 @@
         <dt id="example_group_10" class="passed">location type filtering</dt>
         <script type="text/javascript">moveProgressBar('56.3');</script>
         <dd class="example passed"><span class="passed_spec_name">should get the lowest level address when filtering by ROOFTOP</span><span
-                class='duration'>0.13328s</span></dd>
+                class='duration'>0.11481s</span></dd>
         <script type="text/javascript">moveProgressBar('58.1');</script>
         <dd class="example passed"><span class="passed_spec_name">should return street object when filtering by GEOMETRIC_CENTER</span><span
-                class='duration'>0.14035s</span></dd>
+                class='duration'>0.12605s</span></dd>
         <script type="text/javascript">moveProgressBar('60.0');</script>
         <dd class="example passed"><span class="passed_spec_name">should return multiple results when filtering by ROOFTOP and APPROXIMATE</span><span
-                class='duration'>0.15217s</span></dd>
+                class='duration'>0.13386s</span></dd>
       </dl>
     </div>
     <div id="div_group_11" class="example_group passed">
@@ -521,13 +521,13 @@
         <dt id="example_group_12" class="passed">status codes</dt>
         <script type="text/javascript">moveProgressBar('61.8');</script>
         <dd class="example passed"><span class="passed_spec_name">should return a ZERO_RESULTS status code when there are no results</span><span
-                class='duration'>0.10632s</span></dd>
+                class='duration'>0.11083s</span></dd>
         <script type="text/javascript">moveProgressBar('63.6');</script>
         <dd class="example passed"><span class="passed_spec_name">should return REQUEST_DENIED status code when using an invalid key</span><span
-                class='duration'>0.10183s</span></dd>
+                class='duration'>0.10826s</span></dd>
         <script type="text/javascript">moveProgressBar('65.4');</script>
         <dd class="example passed"><span class="passed_spec_name">should return INVALID_REQUEST when the query is improperly formatted</span><span
-                class='duration'>0.10268s</span></dd>
+                class='duration'>0.10075s</span></dd>
         <script type="text/javascript">makeYellow('rspec-header');</script>
         <script type="text/javascript">makeYellow('div_group_12');</script>
         <script type="text/javascript">makeYellow('example_group_12');</script>
@@ -536,10 +536,10 @@
         </dd>
         <script type="text/javascript">moveProgressBar('69.0');</script>
         <dd class="example passed"><span class="passed_spec_name">should return INVALID_REQUEST if an invalid result_type is given</span><span
-                class='duration'>0.10347s</span></dd>
+                class='duration'>0.10542s</span></dd>
         <script type="text/javascript">moveProgressBar('70.9');</script>
         <dd class="example passed"><span class="passed_spec_name">should return INVALID_REQUEST if an invalid location_type is given</span><span
-                class='duration'>0.10739s</span></dd>
+                class='duration'>0.10381s</span></dd>
         <script type="text/javascript">makeYellow('rspec-header');</script>
         <script type="text/javascript">makeYellow('div_group_12');</script>
         <script type="text/javascript">makeYellow('example_group_12');</script>
@@ -564,7 +564,7 @@
         <dt id="example_group_14" class="passed">forward lookup</dt>
         <script type="text/javascript">moveProgressBar('76.3');</script>
         <dd class="example passed"><span
-                class="passed_spec_name">should get google&#39;s latitude and longitude</span><span class='duration'>0.15057s</span>
+                class="passed_spec_name">should get google&#39;s latitude and longitude</span><span class='duration'>0.11630s</span>
         </dd>
       </dl>
     </div>
@@ -573,7 +573,7 @@
         <dt id="example_group_15" class="passed">reverse lookup</dt>
         <script type="text/javascript">moveProgressBar('78.1');</script>
         <dd class="example passed"><span class="passed_spec_name">should get google\s address</span><span
-                class='duration'>0.14427s</span></dd>
+                class='duration'>0.13677s</span></dd>
       </dl>
     </div>
     <div id="div_group_16" class="example_group passed">
@@ -581,22 +581,22 @@
         <dt id="example_group_16" class="passed">response object parsing</dt>
         <script type="text/javascript">moveProgressBar('80.0');</script>
         <dd class="example passed"><span class="passed_spec_name">should parse top level attributes for the geocode response</span><span
-                class='duration'>0.02250s</span></dd>
+                class='duration'>0.02160s</span></dd>
         <script type="text/javascript">moveProgressBar('81.8');</script>
         <dd class="example passed"><span class="passed_spec_name">should parse 2nd level results attributes for the geocode response</span><span
-                class='duration'>0.02119s</span></dd>
+                class='duration'>0.02687s</span></dd>
         <script type="text/javascript">moveProgressBar('83.6');</script>
         <dd class="example passed"><span class="passed_spec_name">should parse 3rd level address component attributes for the geocode response</span><span
-                class='duration'>0.01803s</span></dd>
+                class='duration'>0.01781s</span></dd>
         <script type="text/javascript">moveProgressBar('85.4');</script>
         <dd class="example passed"><span class="passed_spec_name">should parse 3rd level geometry attributes for the geocode response</span><span
-                class='duration'>0.02017s</span></dd>
+                class='duration'>0.02046s</span></dd>
         <script type="text/javascript">moveProgressBar('87.2');</script>
         <dd class="example passed"><span class="passed_spec_name">should parse 4th level bound attributes for the geocode response</span><span
-                class='duration'>0.01762s</span></dd>
+                class='duration'>0.01739s</span></dd>
         <script type="text/javascript">moveProgressBar('89.0');</script>
         <dd class="example passed"><span class="passed_spec_name">should parse 5th level Lat - Lng attributes for the geocode response</span><span
-                class='duration'>0.01828s</span></dd>
+                class='duration'>0.01777s</span></dd>
       </dl>
     </div>
     <div id="div_group_17" class="example_group passed">
@@ -609,10 +609,10 @@
         <dt id="example_group_18" class="passed">Query builder</dt>
         <script type="text/javascript">moveProgressBar('90.9');</script>
         <dd class="example passed"><span class="passed_spec_name">should format an address URL</span><span
-                class='duration'>0.00016s</span></dd>
+                class='duration'>0.00019s</span></dd>
         <script type="text/javascript">moveProgressBar('92.7');</script>
         <dd class="example passed"><span class="passed_spec_name">should format a latlng URL</span><span
-                class='duration'>0.00015s</span></dd>
+                class='duration'>0.00013s</span></dd>
         <script type="text/javascript">moveProgressBar('94.5');</script>
         <dd class="example passed"><span class="passed_spec_name">should format a place_id URL</span><span
                 class='duration'>0.00013s</span></dd>
@@ -621,13 +621,13 @@
                 class='duration'>0.00017s</span></dd>
         <script type="text/javascript">moveProgressBar('98.1');</script>
         <dd class="example passed"><span class="passed_spec_name">should add in an optional param</span><span
-                class='duration'>0.00014s</span></dd>
+                class='duration'>0.00013s</span></dd>
         <script type="text/javascript">moveProgressBar('100.0');</script>
         <dd class="example passed"><span class="passed_spec_name">should handle multiple params</span><span
-                class='duration'>0.00013s</span></dd>
+                class='duration'>0.00018s</span></dd>
       </dl>
     </div>
-    <script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>5.23802 seconds</strong>";</script>
+    <script type="text/javascript">document.getElementById('duration').innerHTML = "Finished in <strong>5.16993 seconds</strong>";</script>
     <script type="text/javascript">document.getElementById('totals').innerHTML = "55 examples, 0 failures, 5 pending";</script>
   </div>
 </div>
