@@ -1,0 +1,150 @@
+
+Geocoding API input params
+[32m  should perform a forward lookup on address[0m
+[32m  should perform a reverse lookup on latitude longitude[0m
+[32m  should perform a reverse lookup on place id[0m
+[32m  should allow a query with address and latlng[0m
+[32m  should not allow search on place_id with latlng or address[0m
+[32m  should return the query in XML[0m
+
+Geocoding API
+  bounding box
+[33m    should limit results to a particular region (PENDING: still finds 6 results all over the US and France)[0m
+[32m    should find the state TX when supplied a Texas-sized bounding box[0m
+[32m    should find the state NY when supplied a NY-sized bounding box[0m
+[32m    should find ZERO_RESULTS when the bounding box corners are reversed[0m
+  component
+[33m    should find Paris, FR only (PENDING: filtering by country:fr should find only one Paris)[0m
+[32m    should return INVALID_REQUEST when only sending a component filter[0m
+  region
+[32m    should find Paris, FR only[0m
+
+Geocoding API
+[32m  should find the Statue of Liberty[0m
+[32m  should find Liberty Island[0m
+[32m  should find the Alamo by address[0m
+[32m  should find the Alamo by coordinates[0m
+
+Geocoding API
+  reverse_lookup
+[32m    should throw an error using lat lng coordinates: 190,190[0m
+[32m    should throw an error using lat lng coordinates: -100,0[0m
+[32m    should throw an error using lat lng coordinates: 100,0[0m
+[32m    should throw an error using lat lng coordinates: 0,190[0m
+[32m    should throw an error using lat lng coordinates: 0,-190[0m
+[32m    should throw an error using lat lng coordinates: -0,-0[0m
+[32m    should throw an error using lat lng coordinates: foo,bar[0m
+[32m    should throw an error using lat lng coordinates: 30.0.0,30.0.0[0m
+[32m    should return multiple results when using lat lng[0m
+[32m    should return one result when using a place_id[0m
+[32m    should encode results in spanish[0m
+    result type filtering
+[32m      should only return one result when filtering by administrative_area_level_1[0m
+[32m      should only return state and zip when filtering by multiple top level result_types[0m
+    location type filtering
+[32m      should get the lowest level address when filtering by ROOFTOP[0m
+[32m      should return street object when filtering by GEOMETRIC_CENTER[0m
+[32m      should return multiple results when filtering by ROOFTOP and APPROXIMATE[0m
+
+Geocoding API
+  status codes
+[32m    should return a ZERO_RESULTS status code when there are no results[0m
+[32m    should return REQUEST_DENIED status code when using an invalid key[0m
+[32m    should return INVALID_REQUEST when the query is improperly formatted[0m
+[33m    should return INVALID_REQUEST if there are extra parameters in the request (PENDING: extra parameters are allowed in a query)[0m
+[32m    should return INVALID_REQUEST if an invalid result_type is given[0m
+[32m    should return INVALID_REQUEST if an invalid location_type is given[0m
+[33m    should return INVALID_REQUEST if reverse lookup types are used in a forward lookup query (PENDING: reverse lookup types are allowed in a forward lookup query)[0m
+[33m    should return INVALID_REQUEST if forward lookup types are used in a reverse lookup query (PENDING: forward lookup types are allowed in a reverse lookup query)[0m
+
+sample geocode response
+  forward lookup
+[32m    should get google's latitude and longitude[0m
+  reverse lookup
+[32m    should get google\s address[0m
+  response object parsing
+[32m    should parse top level attributes for the geocode response[0m
+[32m    should parse 2nd level results attributes for the geocode response[0m
+[32m    should parse 3rd level address component attributes for the geocode response[0m
+[32m    should parse 3rd level geometry attributes for the geocode response[0m
+[32m    should parse 4th level bound attributes for the geocode response[0m
+[32m    should parse 5th level Lat - Lng attributes for the geocode response[0m
+
+sample geocode response
+  Query builder
+[32m    should format an address URL[0m
+[32m    should format a latlng URL[0m
+[32m    should format a place_id URL[0m
+[32m    should format a query with all three main search params[0m
+[32m    should add in an optional param[0m
+[32m    should handle multiple params[0m
+
+Pending: (Failures listed here are expected and do not affect your suite's status)
+
+  1) Geocoding API bounding box should limit results to a particular region
+     [36m# still finds 6 results all over the US and France[0m
+     [33mFailure/Error: [0mexpect(resp.result_count).to eq [1;34m1[0m[0m
+     [33m[0m
+     [33m  expected: 1[0m
+     [33m       got: 6[0m
+     [33m[0m
+     [33m  (compared using ==)[0m
+     [36m# ./spec/filtering_spec.rb:15:in `block (3 levels) in <top (required)>'[0m
+     [36m# ./spec/spec_helper.rb:21:in `block (3 levels) in <top (required)>'[0m
+     [36m# ./spec/spec_helper.rb:21:in `block (2 levels) in <top (required)>'[0m
+
+  2) Geocoding API component should find Paris, FR only
+     [36m# filtering by country:fr should find only one Paris[0m
+     [33mFailure/Error: [0mexpect(resp.result_count).to eq [1;34m1[0m[0m
+     [33m[0m
+     [33m  expected: 1[0m
+     [33m       got: 5[0m
+     [33m[0m
+     [33m  (compared using ==)[0m
+     [36m# ./spec/filtering_spec.rb:41:in `block (3 levels) in <top (required)>'[0m
+     [36m# ./spec/spec_helper.rb:21:in `block (3 levels) in <top (required)>'[0m
+     [36m# ./spec/spec_helper.rb:21:in `block (2 levels) in <top (required)>'[0m
+
+  3) Geocoding API status codes should return INVALID_REQUEST if there are extra parameters in the request
+     [36m# extra parameters are allowed in a query[0m
+     [33mFailure/Error: [0mexpect(resp.status).to eq [31m[1;31m'[0m[31mINVALID_REQUEST[1;31m'[0m[31m[0m[0m
+     [33m[0m
+     [33m  expected: "INVALID_REQUEST"[0m
+     [33m       got: "OK"[0m
+     [33m[0m
+     [33m  (compared using ==)[0m
+     [36m# ./spec/status_codes_spec.rb:36:in `block (3 levels) in <top (required)>'[0m
+     [36m# ./spec/spec_helper.rb:21:in `block (3 levels) in <top (required)>'[0m
+     [36m# ./spec/spec_helper.rb:21:in `block (2 levels) in <top (required)>'[0m
+
+  4) Geocoding API status codes should return INVALID_REQUEST if reverse lookup types are used in a forward lookup query
+     [36m# reverse lookup types are allowed in a forward lookup query[0m
+     [33mFailure/Error: [0mexpect(resp.status).to eq [31m[1;31m'[0m[31mINVALID_REQUEST[1;31m'[0m[31m[0m[0m
+     [33m[0m
+     [33m  expected: "INVALID_REQUEST"[0m
+     [33m       got: "OK"[0m
+     [33m[0m
+     [33m  (compared using ==)[0m
+     [36m# ./spec/status_codes_spec.rb:56:in `block (4 levels) in <top (required)>'[0m
+     [36m# ./spec/status_codes_spec.rb:54:in `each'[0m
+     [36m# ./spec/status_codes_spec.rb:54:in `block (3 levels) in <top (required)>'[0m
+     [36m# ./spec/spec_helper.rb:21:in `block (3 levels) in <top (required)>'[0m
+     [36m# ./spec/spec_helper.rb:21:in `block (2 levels) in <top (required)>'[0m
+
+  5) Geocoding API status codes should return INVALID_REQUEST if forward lookup types are used in a reverse lookup query
+     [36m# forward lookup types are allowed in a reverse lookup query[0m
+     [33mFailure/Error: [0mexpect(resp.status).to eq [31m[1;31m'[0m[31mINVALID_REQUEST[1;31m'[0m[31m[0m[0m
+     [33m[0m
+     [33m  expected: "INVALID_REQUEST"[0m
+     [33m       got: "OK"[0m
+     [33m[0m
+     [33m  (compared using ==)[0m
+     [36m# ./spec/status_codes_spec.rb:68:in `block (4 levels) in <top (required)>'[0m
+     [36m# ./spec/status_codes_spec.rb:66:in `each'[0m
+     [36m# ./spec/status_codes_spec.rb:66:in `block (3 levels) in <top (required)>'[0m
+     [36m# ./spec/spec_helper.rb:21:in `block (3 levels) in <top (required)>'[0m
+     [36m# ./spec/spec_helper.rb:21:in `block (2 levels) in <top (required)>'[0m
+
+Finished in 5.73 seconds (files took 0.7193 seconds to load)
+[33m55 examples, 0 failures, 5 pending[0m
+
